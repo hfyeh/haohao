@@ -16,6 +16,10 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
   late int _num2;
   final _controller = TextEditingController();
   late FocusNode _focusNode;
+  final _textStyle = const TextStyle(
+    color: Colors.deepPurple,
+    fontSize: 50,
+  );
 
   @override
   void initState() {
@@ -38,7 +42,11 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
         children: <Widget>[
           Expanded(
             child: Center(
-              child: Text('$_num1 + $_num2 ='),
+              child: Text(
+                '$_num1 + $_num2 =',
+                textAlign: TextAlign.center,
+                style: _textStyle,
+              ),
             ),
           ),
           Expanded(
@@ -46,6 +54,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
               autofocus: true,
               focusNode: _focusNode,
               textAlign: TextAlign.center,
+              style: _textStyle,
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.digitsOnly
