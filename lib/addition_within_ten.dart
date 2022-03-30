@@ -21,6 +21,15 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
     fontSize: 50,
   );
 
+  final correctMsg = const SnackBar(
+    duration: Duration(seconds: 1),
+    content: Text('Awesome!', style: TextStyle(fontSize: 40)),
+  );
+  final wrongMsg = const SnackBar(
+    duration: Duration(seconds: 1),
+    content: Text('Try again.', style: TextStyle(fontSize: 40)),
+  );
+
   @override
   void initState() {
     super.initState();
@@ -87,6 +96,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
   void _resetQuestion(String answer) {
     if (_isAnswerCorrect(answer)) {
       debugPrint('The answer is correct!');
+      ScaffoldMessenger.of(context).showSnackBar(correctMsg);
       Future.delayed(const Duration(seconds: 2), () {
         setState(() {
           _generateNumbers();
@@ -95,6 +105,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
         });
       });
     } else {
+      ScaffoldMessenger.of(context).showSnackBar(wrongMsg);
       debugPrint('Try again.');
     }
   }
