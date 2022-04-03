@@ -4,6 +4,8 @@ class Addition {
   late int _num1;
   late int _num2;
 
+  int get result => _num1 + _num2;
+
   Addition() {
     generateNumbers(sumMax: 10);
   }
