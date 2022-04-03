@@ -13,15 +13,19 @@ class AdditionWithin {
 
   void generateNumbers() {
     bool firstTime = true;
-    while (firstTime || _num1 + _num2 > _maxSum) {
+    while (firstTime || _exceedsLimit()) {
       _num1 = Random().nextInt(_maxSum);
       _num2 = Random().nextInt(_maxSum);
       firstTime = false;
     }
   }
 
+  bool _exceedsLimit() {
+    return result > _maxSum;
+  }
+
   bool isAnswerCorrect({required int answer}) {
-    return answer == _num1 + _num2;
+    return answer == result;
   }
 
   String showQuestion() {
