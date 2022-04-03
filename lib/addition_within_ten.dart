@@ -11,7 +11,7 @@ class AdditionWithinTen extends StatefulWidget {
 }
 
 class _AdditionWithinTenState extends State<AdditionWithinTen> {
-  Addition addition = Addition();
+  Addition addition = Addition(10);
 
   final _controller = TextEditingController();
   late FocusNode _focusNode;
@@ -33,7 +33,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
   @override
   void initState() {
     super.initState();
-    addition.generateNumbers(sumMax: 10);
+    addition.generateNumbers();
     _focusNode = FocusNode();
   }
 
@@ -90,7 +90,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
       ScaffoldMessenger.of(context).showSnackBar(correctMsg);
       Future.delayed(const Duration(seconds: 2), () {
         setState(() {
-          addition.generateNumbers(sumMax: 10);
+          addition.generateNumbers();
           _controller.clear();
           _focusNode.requestFocus();
         });
