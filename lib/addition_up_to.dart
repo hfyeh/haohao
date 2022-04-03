@@ -1,13 +1,13 @@
 import 'dart:math';
 
-class Addition {
+class AdditionUpTo {
   late int _num1;
   late int _num2;
   final int _sumLimit;
 
   int get result => _num1 + _num2;
 
-  Addition(this._sumLimit) {
+  AdditionUpTo(this._sumLimit) {
     generateNumbers();
   }
 
