@@ -28,7 +28,7 @@ class SubtractionWithin {
     return result < 0;
   }
 
-  bool isAnswerCorrect({required int answer}) {
+  bool isCorrect({required int answer}) {
     return answer == result;
   }
 

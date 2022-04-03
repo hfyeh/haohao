@@ -24,7 +24,7 @@ class AdditionWithin {
     return result > _maxSum;
   }
 
-  bool isAnswerCorrect({required int answer}) {
+  bool isCorrect({required int answer}) {
     return answer == result;
   }
 

@@ -11,7 +11,7 @@ void main() {
     test('Should pass answer check', () {
       final addition = AdditionWithin(10);
       addition.generateNumbers();
-      expect(addition.isAnswerCorrect(answer: addition.result), equals(true));
+      expect(addition.isCorrect(answer: addition.result), equals(true));
     });
   });
 }

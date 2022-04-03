@@ -81,7 +81,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
   }
 
   bool _isAnswerCorrect(String answer) {
-    return addition.isAnswerCorrect(answer: int.parse(answer));
+    return addition.isCorrect(answer: int.parse(answer));
   }
 
   void _resetQuestion(String answer) {
