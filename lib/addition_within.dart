@@ -1,21 +1,21 @@
 import 'dart:math';
 
-class AdditionUpTo {
+class AdditionWithin {
   late int _num1;
   late int _num2;
-  final int _sumLimit;
+  final int _maxSum;
 
   int get result => _num1 + _num2;
 
-  AdditionUpTo(this._sumLimit) {
+  AdditionWithin(this._maxSum) {
     generateNumbers();
   }
 
   void generateNumbers() {
     bool firstTime = true;
-    while (firstTime || _num1 + _num2 > _sumLimit) {
-      _num1 = Random().nextInt(_sumLimit);
-      _num2 = Random().nextInt(_sumLimit);
+    while (firstTime || _num1 + _num2 > _maxSum) {
+      _num1 = Random().nextInt(_maxSum);
+      _num2 = Random().nextInt(_maxSum);
       firstTime = false;
     }
   }
