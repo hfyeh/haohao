@@ -2,28 +2,21 @@ import 'dart:math';
 
 import 'package:haohao/quiz_item.dart';
 
-class SubtractionWithin implements QuizItem {
+class Subtraction implements QuizItem {
   late int _minuend;
   late int _subtrahend;
   final int _diffLimit;
 
   int get result => _minuend - _subtrahend;
 
-  SubtractionWithin(this._diffLimit) {
+  Subtraction({required int within}) : _diffLimit = within {
     generateNumbers();
   }
 
+  @override
   void generateNumbers() {
-    bool firstTime = true;
-    while (firstTime || _exceedsLimit()) {
-      _minuend = Random().nextInt(_diffLimit);
-      _subtrahend = Random().nextInt(_minuend);
-      firstTime = false;
-    }
-  }
-
-  bool _exceedsLimit() {
-    return result > _diffLimit;
+    _minuend = Random().nextInt(_diffLimit);
+    _subtrahend = Random().nextInt(_minuend);
   }
 
   @override

@@ -9,7 +9,7 @@ class Addition implements QuizItem {
 
   int get result => _num1 + _num2;
 
-  Addition({required within}) : _maxSum = within {
+  Addition({required int within}) : _maxSum = within {
     generateNumbers();
   }
 
