@@ -7,5 +7,11 @@ void main() {
       final addition = AdditionUpTo(10);
       expect(addition.result, lessThanOrEqualTo(10));
     });
+
+    test('Should should less than or equal to 10', () {
+      final addition = AdditionUpTo(10);
+      addition.generateNumbers();
+      expect(addition.result, lessThanOrEqualTo(10));
+    });
   });
 }
