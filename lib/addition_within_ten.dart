@@ -4,6 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
 
+class Addition {
+  late int _num1;
+  late int _num2;
+
+  Addition() {
+    generateNumbers(sumMax: 10);
+  }
+
+  void generateNumbers({required int sumMax}) {
+    bool firstTime = true;
+    while (firstTime || _num1 + _num2 > sumMax) {
+      _num1 = Random().nextInt(sumMax);
+      _num2 = Random().nextInt(sumMax);
+      firstTime = false;
+    }
+  }
+
+  bool isAnswerCorrect({required int answer}) {
+    return answer == _num1 + _num2;
+  }
+
+  String showQuestion() {
+    return '$_num1 + $_num2 =';
+  }
+}
+
 class AdditionWithinTen extends StatefulWidget {
   const AdditionWithinTen({Key? key}) : super(key: key);
 
@@ -12,10 +38,11 @@ class AdditionWithinTen extends StatefulWidget {
 }
 
 class _AdditionWithinTenState extends State<AdditionWithinTen> {
-  late int _num1;
-  late int _num2;
+  Addition addition = Addition();
+
   final _controller = TextEditingController();
   late FocusNode _focusNode;
+
   final _textStyle = const TextStyle(
     color: Colors.deepPurple,
     fontSize: 50,
@@ -33,7 +60,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
   @override
   void initState() {
     super.initState();
-    _generateNumbers();
+    addition.generateNumbers(sumMax: 10);
     _focusNode = FocusNode();
   }
 
@@ -52,7 +79,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
           Expanded(
             child: Center(
               child: Text(
-                '$_num1 + $_num2 =',
+                addition.showQuestion(),
                 textAlign: TextAlign.center,
                 style: _textStyle,
               ),
@@ -80,17 +107,8 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
     );
   }
 
-  void _generateNumbers() {
-    bool firstTime = true;
-    while (firstTime || _num1 + _num2 > 10) {
-      _num1 = Random().nextInt(10);
-      _num2 = Random().nextInt(10);
-      firstTime = false;
-    }
-  }
-
   bool _isAnswerCorrect(String answer) {
-    return int.parse(answer) == _num1 + _num2;
+    return addition.isAnswerCorrect(answer: int.parse(answer));
   }
 
   void _resetQuestion(String answer) {
@@ -99,7 +117,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
       ScaffoldMessenger.of(context).showSnackBar(correctMsg);
       Future.delayed(const Duration(seconds: 2), () {
         setState(() {
-          _generateNumbers();
+          addition.generateNumbers(sumMax: 10);
           _controller.clear();
           _focusNode.requestFocus();
         });
