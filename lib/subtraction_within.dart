@@ -1,6 +1,8 @@
 import 'dart:math';
 
-class SubtractionWithin {
+import 'package:haohao/quiz_item.dart';
+
+class SubtractionWithin implements QuizItem {
   late int _minuend;
   late int _subtrahend;
   final int _diffLimit;
@@ -28,10 +30,12 @@ class SubtractionWithin {
     return result < 0;
   }
 
+  @override
   bool isCorrect({required int answer}) {
     return answer == result;
   }
 
+  @override
   String showQuestion() {
     return '$_minuend - $_subtrahend =';
   }

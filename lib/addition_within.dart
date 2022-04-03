@@ -1,6 +1,8 @@
 import 'dart:math';
 
-class AdditionWithin {
+import 'package:haohao/quiz_item.dart';
+
+class AdditionWithin implements QuizItem {
   late int _num1;
   late int _num2;
   final int _maxSum;
@@ -24,10 +26,12 @@ class AdditionWithin {
     return result > _maxSum;
   }
 
+  @override
   bool isCorrect({required int answer}) {
     return answer == result;
   }
 
+  @override
   String showQuestion() {
     return '$_num1 + $_num2 =';
   }
