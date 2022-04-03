@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:haohao/addition.dart';
+import 'package:haohao/math/arithmetic/addition.dart';
 
 void main() {
   group('Addition', () {

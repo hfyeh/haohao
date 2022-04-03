@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:haohao/addition_within_ten.dart';
+import 'package:haohao/widgets/addition_within_ten.dart';
 
 void main() {
   runApp(const MyApp());

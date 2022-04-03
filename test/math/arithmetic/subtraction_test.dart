@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:haohao/subtraction.dart';
+import 'package:haohao/math/arithmetic/subtraction.dart';
 
 void main() {
   group('Subtraction', () {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'addition.dart';
+import 'package:haohao/math/arithmetic/addition.dart';
 
 class AdditionWithinTen extends StatefulWidget {
   const AdditionWithinTen({Key? key}) : super(key: key);
