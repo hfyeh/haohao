@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'addition_within.dart';
+import 'addition.dart';
 
 class AdditionWithinTen extends StatefulWidget {
   const AdditionWithinTen({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class AdditionWithinTen extends StatefulWidget {
 }
 
 class _AdditionWithinTenState extends State<AdditionWithinTen> {
-  AdditionWithin addition = AdditionWithin(10);
+  Addition addition = Addition(within: 10);
 
   final _controller = TextEditingController();
   late FocusNode _focusNode;

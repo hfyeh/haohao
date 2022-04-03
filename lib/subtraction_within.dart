@@ -15,19 +15,15 @@ class SubtractionWithin implements QuizItem {
 
   void generateNumbers() {
     bool firstTime = true;
-    while (firstTime || _isDiffNegative() || _exceedsLimit()) {
+    while (firstTime || _exceedsLimit()) {
       _minuend = Random().nextInt(_diffLimit);
-      _subtrahend = Random().nextInt(_diffLimit);
+      _subtrahend = Random().nextInt(_minuend);
       firstTime = false;
     }
   }
 
   bool _exceedsLimit() {
     return result > _diffLimit;
-  }
-
-  bool _isDiffNegative() {
-    return result < 0;
   }
 
   @override
