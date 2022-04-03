@@ -16,7 +16,12 @@ class Addition implements QuizItem {
   @override
   void generateNumbers() {
     _num1 = Random().nextInt(_maxSum);
-    _num2 = Random().nextInt(_maxSum - _num1);
+
+    if (_num1 != _maxSum) {
+      _num2 = Random().nextInt(_maxSum - _num1);
+    } else {
+      _num2 = 0;
+    }
   }
 
   @override

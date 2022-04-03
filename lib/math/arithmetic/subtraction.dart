@@ -16,7 +16,12 @@ class Subtraction implements QuizItem {
   @override
   void generateNumbers() {
     _minuend = Random().nextInt(_diffLimit);
-    _subtrahend = Random().nextInt(_minuend);
+    if (_minuend != 0) {
+      _subtrahend = Random().nextInt(_minuend);
+    } else {
+      _subtrahend = 0;
+
+    }
   }
 
   @override
