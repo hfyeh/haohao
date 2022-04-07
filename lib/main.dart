@@ -53,9 +53,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  List pages = [
-    ['Addition Within 10', QuizCategory.addition],
-    ['Subtraction Within 10', QuizCategory.subtraction],
+  List<Map> items = [
+    {
+      'quizName': 'Addition Within 10',
+      'quizCategory': QuizCategory.addition,
+    },
+    {
+      'quizName': 'Subtraction Within 10',
+      'quizCategory': QuizCategory.subtraction,
+    },
   ];
 
   void _incrementCounter() {
@@ -84,17 +90,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: ListView.builder(
-        itemCount: pages.length,
+        itemCount: items.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(pages[index][0]),
+            title: Text(items[index]['quizName']),
             trailing: const Icon(Icons.keyboard_arrow_right_sharp),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      ArithmeticWithinTen(arithOp: pages[index][1]),
+                  builder: (context) => ArithmeticWithinTen(
+                      arithOp: items[index]['quizCategory']),
                 ),
               );
             },
