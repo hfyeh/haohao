@@ -3,16 +3,17 @@ import 'package:flutter/services.dart';
 
 import 'package:haohao/quiz_item.dart';
 
-class AdditionWithinTen extends StatefulWidget {
+class ArithmeticWithinTen extends StatefulWidget {
   final QuizCategory arithOp;
 
-  const AdditionWithinTen({Key? key, required this.arithOp}) : super(key: key);
+  const ArithmeticWithinTen({Key? key, required this.arithOp})
+      : super(key: key);
 
   @override
-  State<AdditionWithinTen> createState() => _AdditionWithinTenState();
+  State<ArithmeticWithinTen> createState() => _ArithmeticWithinTenState();
 }
 
-class _AdditionWithinTenState extends State<AdditionWithinTen> {
+class _ArithmeticWithinTenState extends State<ArithmeticWithinTen> {
   late final quizItem = QuizItem(widget.arithOp);
 
   final _controller = TextEditingController();
