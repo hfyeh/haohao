@@ -48,37 +48,39 @@ class _ArithmeticWithinTenState extends State<ArithmeticWithinTen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            child: Center(
-              child: Text(
-                quizItem.showQuestion(),
+    return Scaffold(
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Center(
+                child: Text(
+                  quizItem.showQuestion(),
+                  textAlign: TextAlign.center,
+                  style: _textStyle,
+                ),
+              ),
+            ),
+            Expanded(
+              child: TextField(
+                autofocus: true,
+                focusNode: _focusNode,
                 textAlign: TextAlign.center,
                 style: _textStyle,
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                onSubmitted: _resetQuestion,
+                controller: _controller,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: TextField(
-              autofocus: true,
-              focusNode: _focusNode,
-              textAlign: TextAlign.center,
-              style: _textStyle,
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],
-              onSubmitted: _resetQuestion,
-              controller: _controller,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

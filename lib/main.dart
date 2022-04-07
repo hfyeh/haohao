@@ -53,6 +53,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  List pages = [
+    ['Addition Within 10', QuizCategory.addition],
+    ['Subtraction Within 10', QuizCategory.subtraction],
+  ];
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -78,7 +83,24 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: const ArithmeticWithinTen(arithOp: QuizCategory.subtraction),
+      body: ListView.builder(
+        itemCount: pages.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(pages[index][0]),
+            trailing: const Icon(Icons.keyboard_arrow_right_sharp),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ArithmeticWithinTen(arithOp: pages[index][1]),
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

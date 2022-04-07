@@ -20,7 +20,6 @@ class Subtraction implements QuizItem {
       _subtrahend = Random().nextInt(_minuend);
     } else {
       _subtrahend = 0;
-
     }
   }
 
