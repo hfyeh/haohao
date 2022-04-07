@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:haohao/math/arithmetic/addition.dart';
+import 'package:haohao/quiz_item.dart';
 
 class AdditionWithinTen extends StatefulWidget {
-  const AdditionWithinTen({Key? key}) : super(key: key);
+  final QuizCategory arithOp;
+
+  const AdditionWithinTen({Key? key, required this.arithOp}) : super(key: key);
 
   @override
   State<AdditionWithinTen> createState() => _AdditionWithinTenState();
 }
 
 class _AdditionWithinTenState extends State<AdditionWithinTen> {
-  Addition addition = Addition(within: 10);
+  late final quizItem = QuizItem(widget.arithOp);
 
   final _controller = TextEditingController();
   late FocusNode _focusNode;
@@ -33,7 +35,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
   @override
   void initState() {
     super.initState();
-    addition.generateNumbers();
+    quizItem.generateNumbers();
     _focusNode = FocusNode();
   }
 
@@ -52,7 +54,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
           Expanded(
             child: Center(
               child: Text(
-                addition.showQuestion(),
+                quizItem.showQuestion(),
                 textAlign: TextAlign.center,
                 style: _textStyle,
               ),
@@ -81,7 +83,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
   }
 
   bool _isAnswerCorrect(String answer) {
-    return addition.isCorrect(answer: int.parse(answer));
+    return quizItem.isCorrect(answer: int.parse(answer));
   }
 
   void _resetQuestion(String answer) {
@@ -90,7 +92,7 @@ class _AdditionWithinTenState extends State<AdditionWithinTen> {
       ScaffoldMessenger.of(context).showSnackBar(correctMsg);
       Future.delayed(const Duration(seconds: 2), () {
         setState(() {
-          addition.generateNumbers();
+          quizItem.generateNumbers();
           _controller.clear();
           _focusNode.requestFocus();
         });

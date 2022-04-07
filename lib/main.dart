@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haohao/quiz_item.dart';
 import 'package:haohao/widgets/addition_within_ten.dart';
 
 void main() {
@@ -77,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: const AdditionWithinTen(),
+      body: const AdditionWithinTen(arithOp: QuizCategory.subtraction),
     );
   }
 }
