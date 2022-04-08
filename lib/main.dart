@@ -53,14 +53,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  List<Map> items = [
+  late List<Map> items = [
     {
       'quizName': 'Addition Within 10',
-      'quizCategory': QuizCategory.addition,
+      'quizCategory': const ArithmeticWithinTen(arithOp: QuizCategory.addition),
     },
     {
       'quizName': 'Subtraction Within 10',
-      'quizCategory': QuizCategory.subtraction,
+      'quizCategory':
+          const ArithmeticWithinTen(arithOp: QuizCategory.subtraction),
     },
   ];
 
@@ -99,8 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ArithmeticWithinTen(
-                      arithOp: items[index]['quizCategory']),
+                  builder: (context) => items[index]['quizCategory'],
                 ),
               );
             },
